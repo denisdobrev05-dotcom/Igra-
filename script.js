@@ -47,7 +47,6 @@ function init() {
     buildSkybox();
     buildDust();
     setupControls();
-    showHUD();
     animate();
   });
 }
