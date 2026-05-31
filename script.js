@@ -47,6 +47,7 @@ function init() {
     buildSkybox();
     buildDust();
     setupControls();
+    startGame();
     animate();
   });
 }
@@ -501,7 +502,6 @@ function buildWheelMesh() {
 function setupControls() {
   document.addEventListener('keydown', e => {
     keys[e.code] = true;
-    if (e.code === 'Enter' && !started) startGame();
     if (e.code === 'KeyR') resetCar();
   });
   document.addEventListener('keyup', e => { keys[e.code] = false; });
@@ -509,9 +509,11 @@ function setupControls() {
 
 function startGame() {
   started = true;
-  document.getElementById('controls-hint').classList.add('hidden');
   document.getElementById('hud').classList.add('visible');
   document.getElementById('info-bar').classList.add('visible');
+  setTimeout(() => {
+    document.getElementById('controls-hint').classList.add('hidden');
+  }, 5000);
 }
 
 function resetCar() {
@@ -535,10 +537,6 @@ function animate() {
   const dt  = Math.min(now - prevTime, 0.05);
   prevTime  = now;
 
-  if (!started) {
-    renderer.render(scene, camera);
-    return;
-  }
 
   // ── Physics step ──
   world.step(1 / 60, dt, 3);
