@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Автомобилен Симулатор</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loading">
+    <div class="loading-inner">
+      <h1>3D КОЛ СИМУЛАТОР</h1>
+      <div class="loading-bar"><div id="loading-progress"></div></div>
+      <p id="loading-text">Зареждане...</p>
+    </div>
+  </div>
+
+  <div id="hud">
+    <div id="speedometer">
+      <canvas id="speed-canvas" width="160" height="160"></canvas>
+      <div id="speed-value">0</div>
+      <div class="gauge-label">КМ/Ч</div>
+    </div>
+    <div id="tachometer">
+      <canvas id="rpm-canvas" width="160" height="160"></canvas>
+      <div id="rpm-value">0</div>
+      <div class="gauge-label">RPM x100</div>
+    </div>
+    <div id="gear-display">
+      <span id="gear-label">N</span>
+    </div>
+  </div>
+
+  <div id="controls-hint">
+    <div class="hint-row"><span class="key">W / ↑</span> Газ</div>
+    <div class="hint-row"><span class="key">S / ↓</span> Спирачка / Заден ход</div>
+    <div class="hint-row"><span class="key">A / ←</span> Ляво</div>
+    <div class="hint-row"><span class="key">D / →</span> Дясно</div>
+    <div class="hint-row"><span class="key">SPACE</span> Ръчна спирачка</div>
+    <div class="hint-row"><span class="key">R</span> Рестарт</div>
+    <div id="hint-close">Натисни Enter за старт</div>
+  </div>
+
+  <div id="info-bar">
+    <span id="fps-counter">60 FPS</span>
+  </div>
+
+  <canvas id="game-canvas"></canvas>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script src="https://unpkg.com/cannon-es@0.20.0/dist/cannon-es.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
